@@ -38,7 +38,7 @@ server.route({
 
 server.route({
 	method: 'GET',
-	path: '/api/movie/{id?}',
+	path: '/api/movies/{id}',
 	handler: function(req, reply) {
 		var movieId = req.params.id;
 		if (movieId) {

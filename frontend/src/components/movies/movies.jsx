@@ -15,7 +15,6 @@ export default class Movies extends Component {
 	      	}
 	      	return response.json();
 		}).then((jsonData) => {
-			console.log(jsonData.length)
 			this.setState({
 				movies: jsonData
 			});

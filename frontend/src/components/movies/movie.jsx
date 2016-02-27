@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
-
-import styles from './movies.sass';
+import React, { Component, PropTypes } from 'react';
 
 export default class MoviesMoview extends Component {
+	static contextTypes = {
+    	router: React.PropTypes.object
+	}
+
+	goToLink(e) {
+		e.preventDefault();
+		this.context.router.push(`/movies/${this.props.id}`)
+	}
+
 	render() {
 		return (
 			<li className='movies-movie'>
-				<a href='#' className='movies-movie__link'>
+				<a href="#" className='movies-movie__link' onClick={this.goToLink.bind(this)}>
 					<span className='movies-movie__img-wrapper'>
-						<img className='movies-movie__img'
+						<img
+							className='movies-movie__img'
 							src={'/public/covers/' + this.props.images.cover}
 							alt={this.props.title}
 						/>

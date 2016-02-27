@@ -22,6 +22,7 @@ module.exports = {
                     plugins: [
                         'babel-plugin-external-helpers-2',
                         'babel-plugin-transform-runtime',
+                        'syntax-decorators',
                         'transform-class-properties'
                     ]
                 }
