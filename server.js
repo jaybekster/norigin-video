@@ -18,11 +18,14 @@ server.connection({ port: 8888 });
 server.register(Inert, () => {});
 
 server.route({
-	method: 'GET',
-	path: '/',
-	handler: function(req, reply) {
-	    reply.file('./index.html');
-	}
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+        directory: {
+            path: '.',
+            redirectToSlash: true,
+        }
+    }
 });
 
 server.route({
@@ -56,16 +59,13 @@ server.route({
 	}
 });
 
-server.route({
-    method: 'GET',
-    path: '/{param*}',
-    handler: {
-        directory: {
-            path: '.',
-            redirectToSlash: true,
-            index: true
+server.ext('onPreResponse', function (request, reply) {
+    if (request.response.isBoom) {
+        if (request.headers.accept.startsWith('text/html') || request.path.startsWith('/api')) {
+            return reply.redirect('/');
         }
     }
+    return reply.continue();
 });
 
 server.start((err) => {

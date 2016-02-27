@@ -1,17 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Route, Router, hashHistory } from 'react-router';
-import * as containers from './containers';
+import { Route, Router, browserHistory,  Redirect } from 'react-router';
+import Movies from './components/movies/movies.jsx';
+import Movie from './components/movie/movie.jsx';
 
-const {
-	Movies,
-	App
-} = containers;
 
 render(
-	<Router history={hashHistory}>
-		<Route path='/' component={App}>
-			<Route path='/movie/:movieid'/>
+	<Router history={browserHistory}>
+        <Redirect from="/" to="movies" />
+		<Route name="movies" path='/movies' component={Movies}>
+			<Route path='/movies/:movieid'/>
         </Route>
 	</Router>,
 	document.querySelector('#app')

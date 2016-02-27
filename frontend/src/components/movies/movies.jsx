@@ -3,7 +3,8 @@ import Movie from './movie';
 
 export default class Movies extends Component {
 	state = {
-		movies: []
+		movies: [],
+		children: ''
 	}
 
 	componentDidMount() {
@@ -25,9 +26,12 @@ export default class Movies extends Component {
 
 	render() {
 		return (
-			<ul className='movies'>
-				{this.state.movies.map((movie) => <Movie {...movie} key={movie.id}/>)}
-			</ul>
+			<div>
+				{this.props.children}
+				<ul className='movies'>
+					{this.state.movies.map((movie) => <Movie {...movie} key={movie.id}/>)}
+				</ul>
+			</div>
 		)
 	}
 }
