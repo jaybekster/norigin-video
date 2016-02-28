@@ -1,12 +1,12 @@
 var path = require('path'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin");
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	cache: true,
 	context: path.join(__dirname, '/frontend'),
     entry: 'src/app.jsx',
     output: {
-        filename: './frontend/build/bundle.js'
+        filename: './frontend/build/app.js'
     },
     module: {
         loaders: [
@@ -27,15 +27,13 @@ module.exports = {
                     ]
                 }
             }, {
-                test: /\.sass$/,
-                loader: ExtractTextPlugin.extract('style', 'css!sass')
+                test: /\.scss$/,
+                loader:  ExtractTextPlugin.extract('style-loader', 'css!sass')
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin("./frontend/build/app.css", {
-            allChunks: true
-        })
+        new ExtractTextPlugin('./frontend/build/app.css')
     ],
     resolve: {
     	root: path.join(__dirname, '/frontend'),
