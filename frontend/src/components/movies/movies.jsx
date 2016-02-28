@@ -1,10 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import Movie from './movie';
+import React, { Component } from 'react';
+import Movie from './movies-movie';
 
 export default class Movies extends Component {
-	state = {
-		movies: [],
-		children: ''
+	constructor(props) {
+		super();
+		this.state = {
+			movies: [],
+			children: ''
+		}
 	}
 
 	componentDidMount() {

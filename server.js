@@ -32,7 +32,14 @@ server.route({
 	method: 'GET',
 	path: '/api/movies',
 	handler: function(req, reply) {
-		reply(movies);
+		reply(movies.map(function(movie) {
+            return {
+                id: movie.id,
+                title: movie.title,
+                releaseYear: movie.meta.releaseYear,
+                cover: movie.images.cover
+            };
+        }));
 	}
 });
 

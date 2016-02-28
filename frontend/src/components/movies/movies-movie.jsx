@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 export default class MoviesMoview extends Component {
 	static contextTypes = {
-    	router: React.PropTypes.object
+    	router: PropTypes.object
 	}
 
 	goToLink(e) {
@@ -17,7 +17,7 @@ export default class MoviesMoview extends Component {
 					<span className='movies-movie__img-wrapper'>
 						<img
 							className='movies-movie__img'
-							src={'/public/covers/' + this.props.images.cover}
+							src={'/public/covers/' + this.props.cover}
 							alt={this.props.title}
 						/>
 					</span>

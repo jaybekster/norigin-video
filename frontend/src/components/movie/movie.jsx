@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { resolve } from "react-resolver";
 
 class Movie extends Component {
-    state = {}
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
     fetchData(movieId) {
         return fetch(`/api/movies/${movieId}`).then(function(response) {
@@ -31,8 +33,7 @@ class Movie extends Component {
     render() {
         if (this.state.data) {
             return (
-                <div className='movie'>
-                    {this.state.data.id}
+                <div className='movie' key={this.state.data.id}>
                     <video className='movie__video' controls poster={`/public/posters/${this.state.data.images.placeholder}`}>
                         {this.state.data.streams.map(stream => (
                             <source src={stream.url}
