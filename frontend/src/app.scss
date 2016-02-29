@@ -1,6 +1,13 @@
-@import 'components/movies/movies';
+@import 'components/movies-list/movies';
 @import 'components/movie/movie';
 
 #app {
-	max-width: 1280px;
+	max-width: 980px;
+    margin: 0 auto;
+}
+
+html,
+body,
+#app {
+    height: 100%;
 }

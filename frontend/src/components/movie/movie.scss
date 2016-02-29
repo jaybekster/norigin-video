@@ -1,7 +1,12 @@
 .movie {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
 
     &__video {
-        width: 730px;
-        height: 411px;
+        max-width: 730px;
+        width: 100%;
+        height: auto;
     }
 }
+

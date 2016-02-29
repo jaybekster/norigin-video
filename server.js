@@ -69,7 +69,8 @@ server.route({
 server.ext('onPreResponse', function (request, reply) {
     if (request.response.isBoom) {
         if (request.headers.accept.startsWith('text/html') || request.path.startsWith('/api')) {
-            return reply.redirect('/');
+            // return reply.redirect('/');
+            return reply.file('index.html');
         }
     }
     return reply.continue();
