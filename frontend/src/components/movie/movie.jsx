@@ -30,24 +30,27 @@ class Movie extends Component {
         this.fetchData(nextProps.params.movieId);
     }
 
-    render() {
-        if (this.state.data) {
+    renderVideo(data) {
+        if (data) {
             return (
-                <div className='movie' key={this.state.data.id}>
-                    <video className='movie__video' controls poster={`/public/posters/${this.state.data.images.placeholder}`}>
-                        {this.state.data.streams.map(stream => (
-                            <source src={stream.url}
-                            type={`video/${stream.type}`}/>
-                        ))}
-                    </video>
-                </div>
-            )
-        } else {
-            return (
-                <div className='movie'></div>
+                <video className='movie__video' controls poster={`/public/posters/${this.state.data.images.placeholder}`}>
+                    {this.state.data.streams.map(stream => (
+                        <source src={stream.url}
+                        type={`video/${stream.type}`}/>
+                    ))}
+                </video>
             )
         }
     }
+
+    render() {
+        return (
+            <div className='movie'>
+                { this.renderVideo(this.state.data) }
+            </div>
+        )
+
+    }
 }
 
-export default Movie
+export default Movie;

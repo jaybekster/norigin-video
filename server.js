@@ -37,7 +37,8 @@ server.route({
                 id: movie.id,
                 title: movie.title,
                 releaseYear: movie.meta.releaseYear,
-                cover: movie.images.cover
+                cover: movie.images.cover,
+                description: movie.description
             };
         }));
 	}
@@ -69,7 +70,6 @@ server.route({
 server.ext('onPreResponse', function (request, reply) {
     if (request.response.isBoom) {
         if (request.headers.accept.startsWith('text/html') || request.path.startsWith('/api')) {
-            // return reply.redirect('/');
             return reply.file('index.html');
         }
     }
