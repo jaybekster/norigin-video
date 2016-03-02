@@ -1,0 +1,40 @@
+.tooltip {
+    display: none;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.3);
+    top: 50%;
+    margin-top: -16px;
+    position: absolute;
+    width: 400px;
+    white-space: normal;
+    left: 100%;
+    text-align: left;
+    margin-left: 16px;
+    opacity: 0;
+
+    &:before {
+        content: "";
+        top: 15px;
+        width: 20px;
+        height: 20px;
+        background: white;
+        box-shadow: -5px 5px 8px rgba(0, 0, 0, 0.3);
+        position: absolute;
+        left: 2px;
+        z-index: 0;
+        transform: translateX(-50%) rotate(45deg);
+    }
+
+    &_visible {
+        display: block;
+        animation: showing .25s linear forwards;
+    }
+}
+
+@keyframes showing {
+    100% {
+        opacity: 1;
+    }
+}
+

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Movie from './movies-item';
+import fetchApi from 'src/utils/fetchApi';
 
 export default class Movies extends Component {
 	constructor(props) {
-		super();
+		super(props);
 		this.state = {
 			movies: [],
 			children: ''
@@ -11,18 +12,10 @@ export default class Movies extends Component {
 	}
 
 	componentDidMount() {
-		fetch('/api/movies').then((response) => {
-			if (response.status !== 200) {
-			 	console.log('Looks like there was a problem. Status Code: ' +  response.status);
-	        	return;
-	      	}
-	      	return response.json();
-		}).then((jsonData) => {
+		fetchApi('movies').then((jsonData) => {
 			this.setState({
 				movies: jsonData
 			});
-		}).catch(function(error) {
-			console.log(error);
 		});
 	}
 
@@ -32,7 +25,7 @@ export default class Movies extends Component {
 				<ul className='movies-list'>
 					{this.state.movies.map((movie) => <Movie {...movie} key={movie.id}/>)}
 				</ul>
-				{this.props.children}
+				{this.props.children || 'Choose a movie'}
 			</div>
 		)
 	}

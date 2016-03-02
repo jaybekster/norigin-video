@@ -38,7 +38,9 @@ server.route({
                 title: movie.title,
                 releaseYear: movie.meta.releaseYear,
                 cover: movie.images.cover,
-                description: movie.description
+                description: movie.description,
+                directors: movie.meta.directors.map((director) => director.name),
+                actors: movie.meta.actors.map((actor) => actor.name)
             };
         }));
 	}
@@ -67,13 +69,22 @@ server.route({
 	}
 });
 
-server.ext('onPreResponse', function (request, reply) {
+server.ext('onPreResponse', function(request, reply) {
     if (request.response.isBoom) {
         if (request.headers.accept.startsWith('text/html') || request.path.startsWith('/api')) {
             return reply.file('index.html');
         }
     }
     return reply.continue();
+});
+
+server.ext('onPostHandler', function(request, reply) {
+    // forced delay before reponse to see how components load
+    return reply(new Promise(function(resolve) {
+        setTimeout(function() {
+            resolve(request.response);
+        }, 1500);
+    }));
 });
 
 server.start((err) => {
