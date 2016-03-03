@@ -37,7 +37,7 @@ class Movie extends Component {
         if (data) {
             return (
                 <video className='movie__video' controls poster={`/public/posters/${this.state.data.images.placeholder}`}
-                    key={data.id}
+                    ref='video'
                 >
                     {this.state.data.streams.map((stream, index) => (
                         <source src={stream.url}

@@ -52,7 +52,7 @@ export default class MoviesItem extends Component {
 						/>
 					</span>
 					<span className='movies-item__title'>{this.props.title}</span>
-					<Tooltip ref='tooltip' isVisible={this.state.hovered}>
+					<Tooltip isVisible={this.state.hovered}>
 						<div className='movies-item__tooltip'>
 							{directors || actors ?
 								<dl>

@@ -16,7 +16,7 @@ export default class Tooltip extends Component {
 
     render() {
         return (
-            <div className={classNames('tooltip', {'tooltip_visible': this.props.isVisible})} ref={(c) => this.container = c}>
+            <div className={classNames('tooltip', {'tooltip_visible': this.props.isVisible})} ref='container'>
                 {this.props.children}
             </div>
         )
