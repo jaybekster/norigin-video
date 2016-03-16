@@ -11,7 +11,7 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.(jsx|es6)$/,
+                test: /\.(jsx|js|es6)$/,
                 loader: 'babel',
                 exclude: /node_modules/,
                 query: {
@@ -23,7 +23,8 @@ module.exports = {
                         'babel-plugin-external-helpers-2',
                         'babel-plugin-transform-runtime',
                         'syntax-decorators',
-                        'transform-class-properties'
+                        'transform-class-properties',
+                        'transform-object-rest-spread'
                     ]
                 }
             }, {
@@ -37,6 +38,6 @@ module.exports = {
     ],
     resolve: {
     	root: path.join(__dirname, '/frontend'),
-        extensions: ['', '.js', '.jsx', '.es6', '.sass']
+        extensions: ['', '.jsx', '.js', '.es6', '.sass']
     }
 }

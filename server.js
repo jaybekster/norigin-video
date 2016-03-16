@@ -78,14 +78,14 @@ server.ext('onPreResponse', function(request, reply) {
     return reply.continue();
 });
 
-server.ext('onPostHandler', function(request, reply) {
+// server.ext('onPostHandler', function(request, reply) {
     // forced delay before reponse to see how components load
-    return reply(new Promise(function(resolve) {
-        setTimeout(function() {
-            resolve(request.response);
-        }, 1500);
-    }));
-});
+    // return reply(new Promise(function(resolve) {
+    //     setTimeout(function() {
+    //         resolve(request.response);
+    //     }, 1500);
+    // }));
+// });
 
 server.start((err) => {
 
