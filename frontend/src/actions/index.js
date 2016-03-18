@@ -1,26 +1,9 @@
 import fetchApi from 'src/utils/fetchApi';
 
-export function getMovies(data, action) {
-	return function (dispatch) {
-        setTimeout(function () {
-        	console.log(timeout);
-            dispatch({
-                type: 'MOVIES',
-                message
-            })
-        }, 2000);
-    };
-	// return function (dispatch) {
-	// 	console.log(dispatch)
-	// 	fetchApi('movies').then(response => {
- //        	dispatch({
- //        		type: 'MOVIES',
- //        		asd: 12
- //        	});
- //        });
- //    }
-	// return {
-	// 	data: state
-	// 	type: 'MOVIES'
-	// };
+export function getMovies() {
+	return {
+		fetching: fetch('/api/movies')
+            .then(response => response.json()),
+		types: ['MOVIES_LOAD', 'MOVIES_LOAD_SUCCESS', 'MOVIES_LOAD_FAIL']
+	};
 };
