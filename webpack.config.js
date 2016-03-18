@@ -16,8 +16,8 @@ module.exports = {
                 exclude: /node_modules/,
                 query: {
                     presets: [
-                    	'babel-preset-es2015',
-                        'babel-preset-react'
+                        'babel-preset-react',
+                        'babel-preset-es2015'
                     ],
                     plugins: [
                         'babel-plugin-external-helpers-2',
