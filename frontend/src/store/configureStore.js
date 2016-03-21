@@ -1,9 +1,7 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import logging from './middleware/logging';
 import fetching from './middleware/fetching';
-import moviesReducer from '../reducers';
-
-let rootReducer = combineReducers({moviesReducer});
+import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
     return applyMiddleware(fetching)(createStore)(rootReducer, initialState);

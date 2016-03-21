@@ -1,22 +1,10 @@
-const initialState = {
-    movies: [],
-    movie: {}
-};
+import { combineReducers } from 'redux';
+import movies from './movies';
+import movie from './movie'
 
-export default function getMovies(state = initialState, action) {
-    switch (action.type) {
-    	case 'MOVIES_LOAD_SUCCESS':
-    		return {
-                ...state,
-                movies: action.response
-            };
-        case 'MOVIE_LOAD_SUCCESS':
-            return {
-                ...state,
-                movie: action.response
-            };
-		default:
-			return state;
-    }
-    return state;
-}
+var rootReducer = combineReducers({
+    movies,
+    movie
+});
+
+export default rootReducer;

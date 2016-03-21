@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import Movie from './movies-item';
-import * as moviesActions from '../../actions';
-import fetchApi from 'src/utils/fetchApi';
+import * as moviesActions from '../../actions/movies';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
-	const { movies } = state.moviesReducer;
-
+	const { movies } = state;
 	return {
 		movies
 	};
@@ -20,7 +18,7 @@ function mapDispatchToProps(dispatch) {
 
 class Movies extends Component {
 	componentDidMount() {
-		this.props.getMovies();
+		this.props.loadMovies();
 	}
 
 	render() {
