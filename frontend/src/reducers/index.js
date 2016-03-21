@@ -3,7 +3,7 @@ const initialState = {
     movie: {}
 };
 
-export default function(state = initialState, action) {
+export default function getMovies(state = initialState, action) {
     switch (action.type) {
     	case 'MOVIES_LOAD_SUCCESS':
     		return {
